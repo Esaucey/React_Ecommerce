@@ -1,11 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import NumberFormat from 'react-number-format';
 
-function CartTotal({ getTotalPrice }) {
+function CartTotal({ getTotalPrice, getCount }) {
 
   return (
     <Container>
-      <Subtotal>Subtotal (2 items): ${ getTotalPrice() } </Subtotal>
+      <Subtotal>
+        Subtotal ({getCount()} items): 
+        <NumberFormat value={getTotalPrice()} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+      </Subtotal>
       <CheckoutBtn>Proceed to Checkout</CheckoutBtn>
     </Container>
   )
@@ -33,5 +37,8 @@ const CheckoutBtn = styled.button`
   font-size: 16px;
   :hover {
     background-color: #ddb347;
+  }
+  :active {
+    background-color: #B27D23;
   }
 `

@@ -13,10 +13,19 @@ function Cart({ cartItems }) {
     return total;
   }
 
+  const getCount = () => {
+    let count = 0;
+    //loop through cart items
+    cartItems.forEach((item) => {
+      count += item.product.quantity;
+      }) 
+      return count;
+  }
+
   return (
     <Container>
       <CartItems cartItems={cartItems}/>
-      <CartTotal getTotalPrice={getTotalPrice}/>
+      <CartTotal getCount={getCount} getTotalPrice={getTotalPrice}/>
     </Container>
   )
 }

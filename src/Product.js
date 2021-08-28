@@ -89,6 +89,12 @@ const AddToCartButton = styled.button`
   border: 2px solid #a88734;
   border-radius: 2px;
   cursor: pointer;
+  :hover {
+    background-color: #ddb347;
+  }
+  :active {
+    background-color: #B27D23;
+  }
 `
 
 const ActionSection = styled.div`
