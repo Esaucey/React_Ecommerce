@@ -2,38 +2,57 @@ import './App.css';
 import Header from './Header';
 import Cart from './Cart';
 import Home from './Home';
+import Login from './Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from 'styled-components';
 import { useState } from 'react';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import { useEffect } from 'react';
 // import { Container } from '@material-ui/core';
 
 function App() {
 
-const [ cartItems, setCartItems ] = useState([]);
+  const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('user')));
 
-const getCartItems = () => {
-  db.collection('cartItems').onSnapshot((snapshot) => {
-    const tempItems = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      product: doc.data()
-    }))
-    setCartItems(tempItems);
-  })
-}
+  const [ cartItems, setCartItems ] = useState([]);
 
-useEffect(() => {
-  getCartItems()
-}, [])
+  const getCartItems = () => {
+    db.collection('cartItems').onSnapshot((snapshot) => {
+      const tempItems = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        product: doc.data()
+      }))
+      setCartItems(tempItems);
+    })
+  }
 
-console.log(cartItems)
+  const signOut = () => {
+    console.log("try to signout")
+    auth.signOut().then(() => {
+      localStorage.removeItem('user');
+      setUser(null);
+      
+    })
+  }
+
+  useEffect(() => {
+    getCartItems();
+  }, [])
+
+  console.log("User", user);
 
   return (
     <Router>
-      <Container>
-        <Header cartItems={cartItems}/>
+      {
+        !user ? (
+          <Login setUser={setUser} />
+        ) : (
+          <Container>
+        <Header signOut={signOut} user={user} cartItems={cartItems}/>
         <Switch>
+          <Route path="/login">
+            <Login setUser={setUser} />
+          </Route>
           <Route path="/cart">
             <Cart cartItems={cartItems} />
           </Route>
@@ -43,6 +62,9 @@ console.log(cartItems)
           </Route>
         </Switch>
       </Container>
+        )
+      }
+      
     </Router>
   );
 }

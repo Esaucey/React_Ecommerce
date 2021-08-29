@@ -6,7 +6,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { Link } from "react-router-dom";
 import { db } from './firebase';
 
-function Header({ cartItems }) {
+function Header({ cartItems, user, signOut }) {
 
   const getCount = () => {
     let count = 0;
@@ -40,8 +40,8 @@ function Header({ cartItems }) {
       </HeaderSearch>
 
       <HeaaderNavItems>
-        <HeaderOption>
-          <OptionLineOne>Hello, Eric</OptionLineOne>
+        <HeaderOption onClick={signOut}>
+          <OptionLineOne>Hello, {user.name}</OptionLineOne>
           <OptionLineTwo>Account & List</OptionLineTwo>
         </HeaderOption>
 
@@ -133,6 +133,7 @@ const HeaaderNavItems = styled.div`
 
 const HeaderOption = styled.div`
   padding: 10px 9px 10px 10px; 
+  cursor: pointer;
 `
 const HeaderOptionCart = styled.div`
   display: flex;
