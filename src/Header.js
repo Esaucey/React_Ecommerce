@@ -21,7 +21,7 @@ function Header({ cartItems, user, signOut }) {
     <Container>
       <HeaderLogo>
         <Link to="/">
-          <img src={ "http://lostcoastoutpost.com/media/uploads/event/32885/TheDankLogo.jpg" } alt="logo"/>
+          <img src={ "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" } alt="logo"/>
         </Link>
       </HeaderLogo>
       <HeaderOptionAddress>
@@ -111,6 +111,7 @@ const HeaderSearch = styled.div`
 `
 
 const HeaderSearchInput = styled.input`
+  font-size: 1.2em;
   flex-grow: 1;
   border: 0;
   :focus {

@@ -54,8 +54,9 @@ function Home() {
 export default Home
 
 const Container = styled.div`
-  max-width: 1500px;
+  max-width: 1600px;
   margin: 0 auto;
+  flex-shrink: 1;
 `
 
 const Banner = styled.div`
@@ -68,9 +69,10 @@ const Banner = styled.div`
 `
 
 const Content = styled.div`
-
   padding-left: 10px;
   padding-right: 10px;
   margin-top: -350px;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `

@@ -27,7 +27,6 @@ function App() {
   }
 
   const signOut = () => {
-    console.log("try to signout")
     auth.signOut().then(() => {
       localStorage.removeItem('user');
       setUser(null);
@@ -50,9 +49,6 @@ function App() {
           <Container>
         <Header signOut={signOut} user={user} cartItems={cartItems}/>
         <Switch>
-          <Route path="/login">
-            <Login setUser={setUser} />
-          </Route>
           <Route path="/cart">
             <Cart cartItems={cartItems} />
           </Route>

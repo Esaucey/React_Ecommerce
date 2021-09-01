@@ -55,11 +55,11 @@ export default Product;
 
 const Container = styled.div`
   background-color: white;
+  width: 100%;
   z-index: 100;
   flex: 1;
   padding 20px;
   margin: 10px;
-  max-height: 400px;
   display: flex;
   flex-direction: column;
 `
@@ -78,6 +78,7 @@ const Rating = styled.div`
 `
 
 const Image = styled.img`
+  margin-top: 30px;
   max-height: 200px;
   object-fit: contain;
 `
@@ -98,7 +99,9 @@ const AddToCartButton = styled.button`
 `
 
 const ActionSection = styled.div`
-margin-top: 12px;
-  display: grid;
-  place-items: center;
+  margin-top: 12px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 `
