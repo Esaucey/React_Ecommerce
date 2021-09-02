@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Product from './Product';
 import { db } from './firebase';
 
-function Home() {
+function Home({ searchTerm }) {
   const [products, setProducts] = useState([]);
 
   const getProducts = () => {
@@ -34,7 +34,13 @@ function Home() {
       </Banner>
       <Content>
         {
-          products.map((data) => (
+          products.filter((data) => {
+            if (searchTerm == "") {
+              return data
+            } else if (data.product.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return data
+            }
+          }).map((data) => (
             <Product 
               title={ data.product.name }
               price={ data.product.price }
@@ -44,7 +50,7 @@ function Home() {
             />
           ))
         }
-        
+          
 
       </Content>
     </Container>

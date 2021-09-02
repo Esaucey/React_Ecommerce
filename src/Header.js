@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { db } from './firebase';
 
-function Header({ cartItems, user, signOut }) {
+function Header({ cartItems, user, signOut, searchTerm }) {
 
   const getCount = () => {
     let count = 0;
@@ -33,10 +34,12 @@ function Header({ cartItems, user, signOut }) {
       </HeaderOptionAddress>
 
       <HeaderSearch>
-        <HeaderSearchInput type='text' />
-        <HeaderSearchIconContainer>
-          <SearchIcon />
-        </HeaderSearchIconContainer>
+        <HeaderSearchInput 
+          type='text' 
+          placeholder="Search..." 
+          onChange={searchTerm}
+        />
+ 
       </HeaderSearch>
 
       <HeaaderNavItems>

@@ -16,6 +16,12 @@ function App() {
 
   const [ cartItems, setCartItems ] = useState([]);
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const getSearchTerm = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
   const getCartItems = () => {
     db.collection('cartItems').onSnapshot((snapshot) => {
       const tempItems = snapshot.docs.map((doc) => ({
@@ -38,7 +44,7 @@ function App() {
     getCartItems();
   }, [])
 
-  console.log("User", user);
+  console.log(searchTerm);
 
   return (
     <Router>
@@ -47,14 +53,14 @@ function App() {
           <Login setUser={setUser} />
         ) : (
           <Container>
-        <Header signOut={signOut} user={user} cartItems={cartItems}/>
+        <Header signOut={signOut} user={user} cartItems={cartItems} searchTerm={getSearchTerm}/>
         <Switch>
           <Route path="/cart">
             <Cart cartItems={cartItems} />
           </Route>
 
           <Route path="/">
-            <Home />
+            <Home searchTerm={searchTerm} />
           </Route>
         </Switch>
       </Container>
