@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import ListIcon from '@material-ui/icons/List';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { db } from './firebase';
+
 
 function Header({ cartItems, user, signOut, searchTerm }) {
 
@@ -17,54 +19,62 @@ function Header({ cartItems, user, signOut, searchTerm }) {
       }) 
       return count;
   }
-
   return (
-    <Container>
-      <HeaderLogo>
-        <Link to="/">
-          <img src={ "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" } alt="logo"/>
-        </Link>
-      </HeaderLogo>
-      <HeaderOptionAddress>
-        <LocationOnIcon />
-        <HeaderOption>
-          <OptionLineOne>Hello</OptionLineOne>
-          <OptionLineTwo>Select Your Address</OptionLineTwo>
-        </HeaderOption>
-      </HeaderOptionAddress>
+    <div>
+      <Container>
+        <HeaderLogo>
+          <Link to="/">
+            <img src="logo.png" alt="logo"/>
+          </Link>
+        </HeaderLogo>
+        <HeaderOptionAddress>
+          <HeaderOption>
+          </HeaderOption>
+        </HeaderOptionAddress>
 
-      <HeaderSearch>
-        <HeaderSearchInput 
-          type='text' 
-          placeholder="Search..." 
-          onChange={searchTerm}
-        />
- 
-      </HeaderSearch>
+        <HeaderSearch>
+          <HeaderSearchInput 
+            type='text' 
+            placeholder="Search..." 
+            onChange={searchTerm}
+          />
+  
+        </HeaderSearch>
 
-      <HeaaderNavItems>
-        <HeaderOption onClick={signOut}>
+        <HeaaderNavItems>
+          <HeaderOption onClick={signOut}>
+            <OptionLineOne>Hello, {user.name}</OptionLineOne>
+            <OptionLineTwo>Click to Logout</OptionLineTwo>
+          </HeaderOption>
+
+            <HeaderOptionCart>
+              <Link to="/cart">
+                <ShoppingBasketIcon />
+                <CartCount>{getCount()}</CartCount>
+              </Link>
+            </HeaderOptionCart>
+        </HeaaderNavItems>
+      {/* <ListIconControl>
+        <ListIcon />
+      </ListIconControl> */}
+      </Container>
+      <Menu>
+        <DropDownHeaderOption onClick={signOut}>
           <OptionLineOne>Hello, {user.name}</OptionLineOne>
-          <OptionLineTwo>Account & List</OptionLineTwo>
-        </HeaderOption>
-
-        <HeaderOption>
-        <OptionLineOne>Returns</OptionLineOne>
-          <OptionLineTwo>& Orders</OptionLineTwo>
-        </HeaderOption>
-
+          <OptionLineTwo>Click to Logout</OptionLineTwo>
+        </DropDownHeaderOption>
         
-          <HeaderOptionCart>
+          <DropDownHeaderOptionCart>
             <Link to="/cart">
-              <ShoppingBasketIcon />
-              <CartCount>{getCount()}</CartCount>
+              <ToCart>
+                <ShoppingBasketIcon />
+                <CartCount>{getCount()}</CartCount>
+              </ToCart>
             </Link>
-          </HeaderOptionCart>
-        
-        
-      </HeaaderNavItems>
-
-    </Container>
+          </DropDownHeaderOptionCart>
+         
+      </Menu>
+    </div>
   )
 }
 
@@ -72,7 +82,8 @@ export default Header
 
 const Container = styled.div`
   height: 60px;
-  background-color: #4A5579 ;
+  padding:0 20px 0 20px;
+  background-color: #B0BB66 ;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -121,16 +132,6 @@ const HeaderSearchInput = styled.input`
     border: none;
   }
 `
-
-const HeaderSearchIconContainer = styled.div`
-  background-color: #febd69;
-  width: 45px;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
 const HeaaderNavItems = styled.div`
   display: flex;
 `
@@ -138,20 +139,84 @@ const HeaaderNavItems = styled.div`
 const HeaderOption = styled.div`
   padding: 10px 9px 10px 10px; 
   cursor: pointer;
+
+  text-align: center;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `
+
+const DropDownHeaderOption = styled.div`
+  display: none;
+  flex-grow: 1;
+  @media screen and (max-width: 600px) {
+    display: block;
+    text-align: center;
+  }
+`
+
+
+
 const HeaderOptionCart = styled.div`
   display: flex;
   a {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-decoration: none;
+    flex-grow: 1;
+    justify-content: center;
+  }
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+`
+
+const DropDownHeaderOptionCart = styled.div`
+  display: none;
+  flex-grow: 1;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    background-color: green;
+    justify-content: center;
+    a {
       display: flex;
       align-items: center;
-      padding-right: 9px;
+      margin: 0;
+      padding: 0;
       color: white;
       text-decoration: none;
+      flex-grow: 1;
+      justify-content: center;
     }
+}
+`
+const ToCart = styled.div`
+  display: flex;
+  justify-content: space-around;
 `
 
 const CartCount = styled.div`
   padding-left: 4px;
   font-weight: 700;
   color: #f08804;
+`
+
+const Menu = styled.div`
+    display: none;
+    z-index: 1;
+    background-color: grey;
+    @media screen and (max-width: 600px) {
+      display: flex;
+      justify-content: center;
+    }
+`
+const ListIconControl = styled.div`
+  display: none;
+  @media screen and (max-width: 600px) {
+    margin-left: 20px;
+    display: block;
+  }
 `

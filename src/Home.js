@@ -30,7 +30,8 @@ function Home({ searchTerm }) {
   return (
     <Container>
       <Banner>
-
+        <BannerTitle>Welcome To AmaShop</BannerTitle>
+        <BannerSubTitle>Fine your items and get shopping</BannerSubTitle>
       </Banner>
       <Content>
         {
@@ -62,16 +63,46 @@ export default Home
 const Container = styled.div`
   max-width: 1600px;
   margin: 0 auto;
-  flex-shrink: 1;
 `
 
 const Banner = styled.div`
-  background-image: url('https://i.imgur.com/SYHeuYM.jpg');
+  background-image: url("banner2.jpg");
   min-height: 600px;
-  background-position: center;
+  background-position: top;
   background-size: cover;
   z-index: 1;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))
+`
+
+const BannerTitle = styled.div`
+  padding: 50px 0 0 8%;
+  font-size: 4em;
+
+  @media screen and (max-width: 800px) {
+    font-size: 3em;
+  }
+
+  @media screen and (max-width: 520px) {
+    padding-left: 0;
+    font-size: 2.5em;
+    text-align: center;
+  }
+`
+
+const BannerSubTitle = styled.div`
+  padding: 10px 0 0 8%; 
+  font-size: 3em;
+
+  @media screen and (max-width: 800px) {
+    font-size: 2em;
+    
+  }
+
+  @media screen and (max-width: 520px) {
+    padding-left: 0;
+    font-size: 2em;
+    text-align: center;
+  }
 `
 
 const Content = styled.div`
@@ -81,4 +112,9 @@ const Content = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `

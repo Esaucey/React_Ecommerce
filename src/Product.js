@@ -62,6 +62,9 @@ const Container = styled.div`
   margin: 10px;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 600px) {
+    width: auto;
+  }
 `
 
 const Title = styled.span`

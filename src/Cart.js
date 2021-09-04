@@ -36,4 +36,13 @@ const Container = styled.div`
   display: flex;
   padding: 14px 18px 0 18px;
   align-items: flex-start;
+  background-image: url("banner2.jpg");
+  min-height: 600px;
+  background-position: top;
+  background-size: cover;
+  z-index: 1;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
 `
