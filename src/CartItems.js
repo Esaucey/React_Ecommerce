@@ -48,6 +48,9 @@ const Container = styled.div`
   padding: 20px;
   margin-right: 18px;
   background-color: white;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (max-width: 600px) {
     margin-right: 0;

@@ -21,6 +21,7 @@ const Container = styled.div`
   flex: 0.3;
   padding: 20px;
   background-color: white;
+  z-index: 100;
 `
 
 const Subtotal = styled.h2`

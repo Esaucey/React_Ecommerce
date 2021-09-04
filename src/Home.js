@@ -67,7 +67,7 @@ const Container = styled.div`
 
 const Banner = styled.div`
   background-image: url("banner2.jpg");
-  min-height: 600px;
+  min-height: 800px;
   background-position: top;
   background-size: cover;
   z-index: 1;
@@ -108,7 +108,7 @@ const BannerSubTitle = styled.div`
 const Content = styled.div`
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: -350px;
+  margin-top: -550px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

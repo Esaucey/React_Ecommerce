@@ -24,8 +24,11 @@ function Cart({ cartItems }) {
 
   return (
     <Container>
-      <CartItems cartItems={cartItems}/>
-      <CartTotal getCount={getCount} getTotalPrice={getTotalPrice}/>
+      <Banner></Banner>
+      <Content>
+        <CartItems cartItems={cartItems}/>
+        <CartTotal getCount={getCount} getTotalPrice={getTotalPrice}/>
+      </Content>
     </Container>
   )
 }
@@ -33,16 +36,28 @@ function Cart({ cartItems }) {
 export default Cart
 
 const Container = styled.div`
-  display: flex;
-  padding: 14px 18px 0 18px;
+  margin: auto;
+  max-width: 1600px;
+  display: block;
+  padding: 0 18px 0 18px;
   align-items: flex-start;
-  background-image: url("banner2.jpg");
-  min-height: 600px;
-  background-position: top;
-  background-size: cover;
-  z-index: 1;
+
+
 
   @media screen and (max-width: 600px) {
     display: block;
   }
+`
+const Banner = styled.div`
+  margin: 0 -20px 0 -20px;
+  background-image: url("banner2.jpg");
+  min-height: 800px;
+  -webkit-mask-image: linear-gradient(to top, transparent 5%, black 100%);
+  background-position: top;
+  background-size: cover;
+  z-index: 1;
+`
+const Content = styled.div`
+  display: flex;
+  margin-top: -780px;
 `

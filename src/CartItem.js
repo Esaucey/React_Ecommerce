@@ -60,6 +60,7 @@ const Container = styled.div`
   padding-bottom: 12px;
   display: flex;
   border-bottom: 1px solid #DDD;
+  z-index: 100;
 `
 
 const ImageContainer = styled.div`
