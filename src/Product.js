@@ -55,10 +55,10 @@ export default Product;
 
 const Container = styled.div`
   background-color: white;
-  width: 100%;
+  width: auto;
   z-index: 100;
-  flex: 1;
-  padding 20px;
+  flex: 20%;
+  padding 30px;
   margin: 10px;
   display: flex;
   flex-direction: column;

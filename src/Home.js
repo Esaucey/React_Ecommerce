@@ -114,6 +114,7 @@ const Content = styled.div`
   flex-wrap: wrap;
   flex-grow: 1;
   flex-shrink: 1;
+  justify-content: flex-start;
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
