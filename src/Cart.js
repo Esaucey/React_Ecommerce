@@ -60,4 +60,8 @@ const Banner = styled.div`
 const Content = styled.div`
   display: flex;
   margin-top: -780px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `
