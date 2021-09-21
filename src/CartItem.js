@@ -29,8 +29,13 @@ function CartItem({id, item}) {
       <CartItemInfo>
         <CartItemInfoTop>
           <h2>{item.name}</h2>
+
         </CartItemInfoTop>
+        <CartItemPrice>
+            <p>${item.price}</p>
+          </CartItemPrice>
         <CartItemInfoBottom>
+
           <CartItemQuantityContainer>
             <select 
               value={item.quantity}
@@ -46,9 +51,7 @@ function CartItem({id, item}) {
           </CartItemDeleteContainer>
         </CartItemInfoBottom>
       </CartItemInfo>
-      <CartItemPrice>
-        ${item.price}
-      </CartItemPrice>
+
     </Container>
   )
 }
@@ -61,6 +64,10 @@ const Container = styled.div`
   display: flex;
   border-bottom: 1px solid #DDD;
   z-index: 100;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
 `
 
 const ImageContainer = styled.div`
@@ -114,5 +121,5 @@ const CartItemDeleteContainer = styled.div`
 const CartItemPrice = styled.div`
   font-size: 18px;
   font-weight: 700;
-  margin-left: 16px;
+  margin: 10px 0 10px 0;
 `
