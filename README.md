@@ -26,4 +26,4 @@ The Proceed to Checkout button does not have any function.
 
 ## Deployment
 
-["AmaShop"](https://clone-dc0c9.web.app/)
+[AmaShop](https://clone-dc0c9.web.app/)
