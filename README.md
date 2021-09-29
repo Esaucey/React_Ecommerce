@@ -16,7 +16,7 @@ Click login with your Google account.
 
 On the home page, the user can search for the name of the item that is listed in the content section. Click on the "add to cart" button to put the items in the shopping cart. Click the user name to logout.
 
-!["Home Page"](./publick/screenshot2.PNG)
+!["Home Page"](./public/screenshot2.PNG)
 
 On the cart page, the user can change the qunatity of the added items or delete them.
 
